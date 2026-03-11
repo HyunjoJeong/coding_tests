@@ -7,51 +7,27 @@ N = 10
 SIZE = 100
 outputBuffer = []
 
-UP = 0; LEFT = 1; RIGHT = 2
-
 def solve():
     global ladder
 
     x = ladder[SIZE-1].index(2)
     y = SIZE - 1
-    dir = UP
 
-    while y != 0:
-        y_up = y - 1
-        x_left = x - 1
-        x_right = x + 1
-
-        if dir == UP:
-            if (x_left >= 0 and ladder[y][x_left] == 1):
-                dir = LEFT
-                x = x_left
-            elif (x+1 < SIZE and ladder[y][x_right] == 1):
-                dir = RIGHT
-                x = x_right
-            else:
-                y = y_up
-        elif dir == LEFT:
-            if ladder[y_up][x]:
-                dir = UP
-                y = y_up
-            else:
-                x = x_left
-        elif dir == RIGHT:
-            if ladder[y_up][x]:
-                dir = UP
-                y = y_up
-            else:
-                x = x_right
+    while y > 0:
+        if (x > 0 and ladder[y][x-1] == 1):
+            while (x > 0 and ladder[y][x-1] == 1):
+                x -= 1
+        elif (x < SIZE-1 and ladder[y][x+1] == 1):
+            while (x < SIZE-1 and ladder[y][x+1] == 1):
+                x += 1
+        y -= 1
     
     outputBuffer.append(x)
 
 ## 입력
 for n in range(N):
-    _ = input()
-    ladder = []
-
-    for s in range(SIZE):
-        ladder.append(list(map(int, input().split())))
+    tc_num = input()
+    ladder = [list(map(int, input().split())) for _ in range(SIZE)]
 
     solve()
 
