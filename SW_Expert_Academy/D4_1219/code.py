@@ -8,22 +8,24 @@ SIZE = 100
 outputBuffer = []
 
 def solve(node: int):
-    global graph
+    global graph, visited
+    
+    visited[node] = True
     nextNodes = graph[node]
 
-    if not nextNodes:
-        return 0
     if 99 in nextNodes:
         return 1
-    if len(nextNodes) == 1:
-        return solve(nextNodes[0])
-    return solve(nextNodes[0]) or solve(nextNodes[1])
+    for nextNode in nextNodes:
+        if not visited[nextNode] and solve(nextNode):
+            return 1
+    return 0
 
 ## 입력
 for n in range(N):
     edgeCount = int(input().split()[1])
     secondLine = input().split()
 
+    visited = [False] * SIZE
     graph = [[] for _ in range(SIZE)]
 
     for i in range(edgeCount * 2):
@@ -31,7 +33,6 @@ for n in range(N):
             graph[int(secondLine[i-1])].append(int(secondLine[i]))
 
     outputBuffer.append(solve(0))
-
 
 ## 출력
 for n in range(N):
