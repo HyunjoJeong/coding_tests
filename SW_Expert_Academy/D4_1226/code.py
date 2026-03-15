@@ -1,4 +1,4 @@
-## 1216. 미로1
+## 1226. 미로1
 ## https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV14vXUqAGMCFAYD
 
 ## 전략: DFS + 방문한 곳은 1(진행 불가)로 변경 / 나아갈 수 있는 곳들을 DFS
