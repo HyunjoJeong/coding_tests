@@ -1,7 +1,7 @@
 ## 1227. 미로2 (1226과 동일한데, SIZE만 100으로 증가 => 좀 더 효율화한 버전)
 ## https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV14wL9KAGkCFAYD
 
-## 전략: DFS + 방문한 곳은 1(진행 불가)로 변경 / recursion 대신 queue를 통해 반복 search 하여 효율 높이기.
+## 전략: DFS + 방문한 곳은 1(진행 불가)로 변경 / recursion 대신 stack을 통해 반복 search 하여 효율 높이기.
 
 N = 10
 SIZE = 100
