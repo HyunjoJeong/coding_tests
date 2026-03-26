@@ -12,13 +12,13 @@ def solve():
     minCosts = [[INF] * SIZE for _ in range(SIZE)]
     minCosts[0][0] = 0
 
-    # 우선순위 큐 (row, col, cost) / dr, dc: 상하좌우 이동용 방향벡터
+    # 우선순위 큐 (cost, row, col) / dr, dc: 상하좌우 이동용 방향벡터
     pq = [(0, 0, 0)]
     dr = [-1, 1, 0, 0]
     dc = [0, 0, -1, 1]
 
     while pq:
-        r, c, cost = heapq.heappop(pq)
+        cost, r, c = heapq.heappop(pq)
 
         if r == SIZE - 1 and c == SIZE - 1:
             outputBuffer.append(cost)
@@ -36,7 +36,7 @@ def solve():
 
                 if newCost < minCosts[nr][nc]:
                     minCosts[nr][nc] = newCost
-                    heapq.heappush(pq, (nr, nc, newCost))
+                    heapq.heappush(pq, (newCost, nr, nc))
 
 ## 입력
 for n in range(N):
