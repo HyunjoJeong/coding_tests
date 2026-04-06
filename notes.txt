@@ -19,3 +19,20 @@ array == array[::-1]
 7. 알면 좋은 문자열 관련 함수들
 문자열 trim => strip, lstrip, rstrip => '12300'.rstrip('0')으로 우측의 0을 다 없앨 수도 있음
 문자열 padding => rjust, ljust 함수 => '123'.rjust(6, '0') 하면 '000123'이 됨. 즉 left-padding
+
+8. 2차원 배열 회전은 꼭 알아두자..
+[1] 오른쪽으로 90도 회전 (기존 배열: M x N)
+rotateRight(matrix):
+    result = [[0 for _c in range(M)] for _r in range(N)]
+    for r in range(M):
+        for c in range(N):
+            result[c][n-1-r] = matrix[r][c]
+    return result
+[2] 왼쪽으로 90도 회전 (기존 배열: M x N)
+rotateLeft(matrix):
+    result = [[0 for _c in range(M)] for _r in range(N)]
+    for r in range(M)
+        for c in range(N)
+            result[n-1-c][r] = matrix[r][c]
+    return result
+[3] 180도 회전: 상-하 / 좌-우 대칭 각각 1번씩
