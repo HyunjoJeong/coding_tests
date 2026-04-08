@@ -36,3 +36,7 @@
                 result[n-1-c][r] = matrix[r][c]
         return result
 [3] 180도 회전: 상-하 / 좌-우 대칭 각각 1번씩
+
+9. 입력 관련 - 읽어야 할 텍스트가 많아지면, input의 성능 병목이 은근히 큼. (정상 동작하는지 확인하고 쓸 것)
+[1] sys 라이브러리 사용 가능하면 input = sys.stdin.readline
+[2] sys 라이브러리 사용 불가하면 input = open(0).readline
