@@ -40,3 +40,7 @@
 9. 입력 관련 - 읽어야 할 텍스트가 많아지면, input의 성능 병목이 은근히 큼. (정상 동작하는지 확인하고 쓸 것)
 [1] sys 라이브러리 사용 가능하면 input = sys.stdin.readline
 [2] sys 라이브러리 사용 불가하면 input = open(0).readline
+
+10. input.txt를 입력으로 받게 하는 방법
+터미널에 `python [코드 파일명] < [입력 파일명]`
+- e.g. `python main.py < input.txt`
