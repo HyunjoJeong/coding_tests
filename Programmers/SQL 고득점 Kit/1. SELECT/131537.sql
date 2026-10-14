@@ -1,0 +1,28 @@
+-- https://school.programmers.co.kr/learn/courses/30/lessons/131537
+-- 오프라인/온라인 판매 데이터 통합하기 (Lv4)
+
+SELECT
+    TO_CHAR(SALES_DATE, 'YYYY-MM-DD') AS SALES_DATE,
+    PRODUCT_ID,
+    USER_ID,
+    SALES_AMOUNT
+FROM
+    ONLINE_SALE
+WHERE
+    TO_CHAR(SALES_DATE, 'YYYY-MM') = '2022-03'
+
+UNION ALL
+
+SELECT
+    TO_CHAR(SALES_DATE, 'YYYY-MM-DD'),
+    PRODUCT_ID,
+    NULL,
+    SALES_AMOUNT
+FROM
+    OFFLINE_SALE
+WHERE
+    TO_CHAR(SALES_DATE, 'YYYY-MM') = '2022-03'
+ORDER BY
+    SALES_DATE,
+    PRODUCT_ID,
+    USER_ID
