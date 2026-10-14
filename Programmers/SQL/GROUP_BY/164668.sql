@@ -1,0 +1,44 @@
+-- https://school.programmers.co.kr/learn/courses/30/lessons/164668
+
+-- 1)
+SELECT
+    U.USER_ID AS USER_ID,
+    U.NICKNAME AS NICKNAME,
+    SUM(B.PRICE) AS TOTAL_SALES
+FROM
+    USED_GOODS_BOARD B
+    JOIN USED_GOODS_USER U
+        ON B.WRITER_ID = U.USER_ID
+GROUP BY
+    U.USER_ID,
+    U.NICKNAME,
+    B.STATUS
+HAVING
+    B.STATUS = 'DONE'
+    AND SUM(B.PRICE) >= 700000
+ORDER BY
+    TOTAL_SALES
+
+-- 2) 인라인 뷰로 해결하기
+SELECT
+    U.USER_ID AS USER_ID,
+    U.NICKNAME AS NICKNAME,
+    S.TOTAL_SALES AS TOTAL_SALES
+FROM
+    (
+    SELECT
+        WRITER_ID,
+        SUM(PRICE) AS TOTAL_SALES
+    FROM
+        USED_GOODS_BOARD
+    GROUP BY
+        WRITER_ID,
+        STATUS
+    HAVING
+        STATUS = 'DONE' AND
+        SUM(PRICE) >= 700000
+    ) S
+    JOIN USED_GOODS_USER U
+        ON S.WRITER_ID = U.USER_ID
+ORDER BY
+    TOTAL_SALES
